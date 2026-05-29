@@ -1,3 +1,3 @@
 # Pba_htlm
 
-Escribiendo en el README del main
+Contenedores contenedores (<div id="parte1"> y <div id="parte2">): Dividen visualmente tu formulario.Clase CSS .oculto: Tiene la propiedad display: none;. Al asignarse a la parte2, hace que empiece invisible al cargar la página.type="button" en los nuevos botones: Es muy importante definir este atributo en los botones de navegación; si no lo pones, el navegador los confundirá con un botón de envío (submit) y reiniciará tu pantalla antes de tiempo.classList.add y classList.remove: Funciones de JavaScript que quitan o ponen la clase .oculto en los contenedores para alternar cuál pantalla está visible.

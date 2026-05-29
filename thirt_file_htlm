@@ -1,1 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario en Pasos con JavaScript</title>
+    <style>
+        /* Estilos generales de la página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Contenedor del formulario */
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        /* Grupo de campos (Alineación vertical) */
+        .form-group {
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        /* Estilo para los inputs de texto, números y fechas */
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"],
+        input[type="datetime-local"] {
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        input[type="datetime-local"]:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+            outline: none;
+        }
+
+        /* Grupo para Checkbox y Radio (Alineación horizontal) */
+        .form-group-row {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group-row input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .form-group-row label {
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        /* Estilos para los botones */
+        .btn-custom {
+            background-color: #edf2f7;
+            color: #4a5568;
+            border: 1px solid #cbd5e1;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .btn-custom:hover {
+            background-color: #e2e8f0;
+        }
+
+        .btn-submit, .btn-next {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover, .btn-next:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Botón secundario para regresar */
+        .btn-back {
+            background-color: #64748b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-back:hover {
+            background-color: #475569;
+        }
+
+        /* CLASE CRUCIAL: Oculta los elementos */
+        .oculto {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Control de Incidencias</h2>
+        <form id="miFormulario"> 
+        
+            <!-- ================= PARTE 1 ================= -->
+            <div id="parte1">
+                <!-- Campo de Contraseña -->
+                <div class="form-group">
+                    <label for="z3">Contraseña:</label>
+                    <input type="password" name="z3" id="z3" placeholder="Introduce tu contraseña"/>
+                </div>
+            
+                <!-- Botón genérico -->
+                <input type="button" name="x1" id="x" class="btn-custom" value="Primer botón de acción"/>
+
+                <!-- Botón para avanzar a la siguiente página -->
+                <button type="button" id="btnSiguiente" class="btn-next">Siguiente</button>
+            </div>
+
+
+            <!-- ================= PARTE 2 (Inicia oculta) ================= -->
+            <div id="parte2" class="oculto">
+                <!-- Campo de Texto -->
+                <div class="form-group">
+                    <label for="y">Escribe tu nombre:</label>
+                    <input type="text" name="y1" id="y" value="Texto predeterminado"/>
+                </div>
+
+                <!-- Campo Numérico -->
+                <div class="form-group">
+                    <label for="z5">Cuántos pases de salida:</label>
+                    <input type="number" name="z5" id="z5" value="5"/>
+                </div>
+
+                <!-- Campo de Fecha -->
+                <div class="form-group">
+                    <label for="z_date">Fecha:</label>
+                    <input type="date" name="z_date" id="z_date"/>
+                </div>
+
+                <!-- Campo Fecha y Hora Local -->
+                <div class="form-group">
+                    <label for="z_datetime">Fecha y hora local:</label>
+                    <input type="datetime-local" name="z_datetime" id="z_datetime"/>
+                </div>
+
+                <!-- Casilla de selección (Checkbox) -->
+                <div class="form-group-row">
+                    <input type="checkbox" name="z2" id="z2" value="checkbox_ok"/>
+                    <label for="z2">Acepto los términos de datos</label>
+                </div>
+
+                <!-- Botón de opción (Radio) -->
+                <div class="form-group-row">
+                    <input type="radio" name="z4" id="z4" value="radio_ok"/>
+                    <label for="z4">Opción de selección única</label>
+                </div>
+
+                <!-- Botón de Envío (Submit) -->
+                <input type="submit" name="z1" id="z1" class="btn-submit" value="Enviar Formulario"/>
+                
+                <!-- Botón para regresar a la contraseña -->
+                <button type="button" id="btnAtras" class="btn-back">Atrás</button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- AQUÍ INICIA EL JAVASCRIPT -->
+    <script>
+        // Elementos de las secciones
+        const parte1 = document.getElementById('parte1');
+        const parte2 = document.getElementById('parte2');
+
+        // Botones de navegación
+        const btnSiguiente = document.getElementById('btnSiguiente');
+        const btnAtras = document.getElementById('btnAtras');
+
+        // Evento para avanzar a la Parte 2
+        btnSiguiente.addEventListener('click', function() {
+            parte1.classList.add('oculto');    // Esconde la contraseña
+            parte2.classList.remove('oculto'); // Muestra el resto de los inputs
+        });
+
+        // Evento para regresar a la Parte 1
+        btnAtras.addEventListener('click', function() {
+            parte2.classList.add('oculto');    // Esconde el resto de los inputs
+            parte1.classList.remove('oculto'); // Muestra la contraseña de nuevo
+        });
+
+        // Evento del botón de acción original
+        const primerBoton = document.getElementById('x');
+        primerBoton.addEventListener('click', function() {
+            alert('¡Hola! Has activado con éxito tu primer script de JavaScript.');
+        });
+
+        // Evento de envío del formulario
+        const formulario = document.getElementById('miFormulario');
+        const campoTexto = document.getElementById('y');
+
+        formulario.addEventListener('submit', function(evento) {
+            evento.preventDefault(); 
+            const valorEscrito = campoTexto.value;
+            alert('Formulario recibido. El texto que ingresaste es: ' + valorEscrito);
+        });
+    </script>
+
+</body>
+</html>
 

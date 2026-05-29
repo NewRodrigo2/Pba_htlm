@@ -3,7 +3,7 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Moderno y Presentable</title>
+    <title>Formulario Moderno con JavaScript</title>
     <style>
         /* Estilos generales de la página */
         body {
@@ -134,26 +134,27 @@
 <body>
 
     <div class="form-container">
-        <h2>Entrada de Datos</h2>
-        <form> 
-            <!-- Botón genérico arriba -->
-            <input type="button" name="x1" id="x" class="btn-custom" value="Primer botón de acción"/>
-
-            <!-- Campo de Texto -->
-            <div class="form-group">
-                <label for="y">Texto de entrada:</label>
-                <input type="text" name="y1" id="y" value="Texto predeterminado"/>
-            </div>
-
+        <h2>Control de Incidencias</h2>
+        <form id="miFormulario"> 
+        
             <!-- Campo de Contraseña -->
             <div class="form-group">
                 <label for="z3">Contraseña:</label>
                 <input type="password" name="z3" id="z3" placeholder="Introduce tu contraseña"/>
             </div>
+        
+            <!-- Botón genérico arriba -->
+            <input type="button" name="x1" id="x" class="btn-custom" value="Primer botón de acción"/>
+
+            <!-- Campo de Texto -->
+            <div class="form-group">
+                <label for="y">EScribe tu nombre:</label>
+                <input type="text" name="y1" id="y" value="Texto predeterminado"/>
+            </div>
 
             <!-- Campo Numérico -->
             <div class="form-group">
-                <label for="z5">Número:</label>
+                <label for="z5">Cuantos pases de salida:</label>
                 <input type="number" name="z5" id="z5" value="5"/>
             </div>
 
@@ -185,6 +186,31 @@
             <input type="submit" name="z1" id="z1" class="btn-submit" value="Enviar Formulario"/>
         </form>
     </div>
+
+    <!-- AQUÍ INICIA EL JAVASCRIPT -->
+    <script>
+        // INTERACCIÓN 1: Evento para el primer botón
+        const primerBoton = document.getElementById('x');
+        
+        primerBoton.addEventListener('click', function() {
+            alert('¡Hola! Has activado con éxito tu primer script de JavaScript.');
+        });
+
+        // INTERACCIÓN 2: Evento para cuando se envía el formulario
+        const formulario = document.getElementById('miFormulario');
+        const campoTexto = document.getElementById('y');
+
+        formulario.addEventListener('submit', function(evento) {
+            // Evitamos que la página se recargue (comportamiento por defecto de un formulario)
+            evento.preventDefault(); 
+            
+            // Obtenemos el valor actual que escribió el usuario
+            const valorEscrito = campoTexto.value;
+            
+            // Mostramos un mensaje personalizado en pantalla usando ese valor
+            alert('Formulario recibido. El texto que ingresaste es: ' + valorEscrito);
+        });
+    </script>
 
 </body>
 </html>
